@@ -5,16 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . curse"
+    "build": "electron-packager . curse",
+    "debug": "node --nolazy --debug-brk=5858 index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "electron-notification-shim": "^1.1.0",
+    "electron-plugins": "^0.1.0",
     "node-notifier": "^5.0.2"
   },
   "devDependencies": {
-    "electron": "^1.4.15",
+    "electron": "^1.6.0",
     "electron-packager": "^8.5.1"
   }
 }
