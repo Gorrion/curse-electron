@@ -4,3 +4,4 @@ node_modules/*
 .directory
 *.*~
 curse-linux-x64/*
+create_app
