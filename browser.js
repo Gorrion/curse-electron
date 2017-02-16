@@ -50,8 +50,10 @@ function getNewIconWithOverlayIcon(text) {
 
     if (text) {
 
-        var radiusX = 50 + ((text + '').length - 2) * 25;
+        var radiusX = 50;
         var radiusY = 50;
+
+        if ((text + '').length > 2) radiusX += ((text + '').length - 2) * 25;
 
         ctx.fillStyle = "#ff3b30";
         ctx.beginPath();
