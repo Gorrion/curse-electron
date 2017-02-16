@@ -50,7 +50,7 @@ function getNewIconWithOverlayIcon(text) {
 
     if (text) {
 
-        var radiusX = 50;
+        var radiusX = 50 + ((text + '').length - 2) * 25;
         var radiusY = 50;
 
         ctx.fillStyle = "#ff3b30";
@@ -76,9 +76,7 @@ function getNewIconWithOverlayIcon(text) {
     }
 
     var img = nativeImage.createFromDataURL(canvas.toDataURL());
-    fs.writeFileSync('image-icon.png', img.toPng(), function (err) {
-        throw err;
-    });
+    fs.writeFileSync( __dirname + '/image-icon.png', img.toPng());
 
     return __dirname + '/image-icon.png';
     //return canvas.toDataURL();
@@ -94,10 +92,12 @@ ipcRenderer.on('syn-get-message-count', (event, arg) => {
 
 function setWindowIconWithBadge(isFlashWindow = false) {
     var text = getUnreadCount();
+    if (+text > 99) { text = '99+'; }
+
     var win = remote.getCurrentWindow();
 
     if (isFlashWindow) {
-        win.flashFrame(!Boolean(text));
+        win.flashFrame(Boolean(text));
     }
 
     switch (process.platform) {
@@ -131,7 +131,7 @@ function getUnreadCount() {
 
     var count = 0;
     for (let i = 0; i < els.length; i++) {
-        count += +els[i].innerHTML;
+        count += parseInt(els[i].innerHTML) || 0;
     }
 
     count += document.querySelectorAll('.icon-missedCall,.VoiceInvites-container').length;
@@ -145,6 +145,8 @@ document.addEventListener('DOMContentLoaded', function () {
         clearTimeout(clickTimeout);
         clickTimeout = setTimeout(setWindowIconWithBadge, 700);
     });
+
+    setTimeout(setWindowIconWithBadge, 1000*7);
 
 });
 
