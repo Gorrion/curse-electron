@@ -36,7 +36,7 @@ function createWindow() {
 
     // and load the index.html of the app.
     win.loadURL(url.format({
-        pathname: 'www.curse.com', //path.join(__dirname, 'index.html'),
+        pathname: 'app.twitch.tv/home', //path.join(__dirname, 'index.html'),
         protocol: 'https:',
         slashes: true,
     }));
