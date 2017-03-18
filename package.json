@@ -6,17 +6,17 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-packager . curse",
-    "debug": "node --nolazy --debug-brk=5858 index.js"
+    "debug": "node --nolazy --debug-brk=5858"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "electron-notification-shim": "^1.1.0",
     "electron-plugins": "^0.1.0",
-    "node-notifier": "^5.0.2"
+    "node-notifier": "^5.1.2"
   },
   "devDependencies": {
-    "electron": "^1.4.15",
-    "electron-packager": "^8.5.1"
+    "electron": "^1.6.2",
+    "electron-packager": "^8.6.0"
   }
 }
